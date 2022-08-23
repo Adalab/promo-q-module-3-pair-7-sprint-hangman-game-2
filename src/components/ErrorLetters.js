@@ -1,4 +1,4 @@
-
+import '../styles/Letters.scss'
 
 const ErrorLetters=(props) =>{
     const renderErrorLetters = () => {
