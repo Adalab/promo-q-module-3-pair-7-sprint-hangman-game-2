@@ -1,8 +1,17 @@
 import '../styles/Footer.scss';
-import { matchPath, useLocation } from 'react-router-dom';
+// import { matchPath, useLocation } from 'react-router-dom';
 import {Link} from 'react-router-dom';
 
-function Footer(){
+
+
+function Footer(props){
+
+    const handleMoreOptions = () => {
+        props.updateWord('') ;
+    };
+    
+
+
     return(
     <footer className="footer">
         
@@ -18,7 +27,9 @@ function Footer(){
             </li>
             <li className="footer__menu-item">
           
-                <Link className="footer__menu-link" to="/options">Más opciones</Link>
+                <Link className="footer__menu-link" to="/options" 
+                onClick={handleMoreOptions}
+                >Más opciones</Link>
             </li>
         </ul>
     </nav>

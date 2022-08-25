@@ -14,6 +14,7 @@ import Form from './Form';
 import {Route, Routes} from 'react-router-dom';
 import Footer from './Footer';
 import Instructions from './Instructions';
+import Options from './Options';
 
 
 function App() {
@@ -27,7 +28,6 @@ function App() {
     });
   }, []);
 
-  
   // events
   const getNumberOfErrors = () => {
     const errorLetters = userLetters.filter(
@@ -35,7 +35,6 @@ function App() {
     );
     return errorLetters.length;
   };
-
 
   const handleLastLetter = (value) => {
     value = value.toLocaleLowerCase();
@@ -46,6 +45,10 @@ function App() {
       setUserLetters([...userLetters]);
     }
   };
+
+  const updateWord = (value) => {
+    setWord(value);
+  }
 
 
   return (
@@ -61,12 +64,11 @@ function App() {
 
           <Form  lastLetter={lastLetter} handleLastLetter={handleLastLetter}/>
           {/*handleSubmit={handleSubmit} lastLetter={lastLetter} handleKeyDown={handleKeyDown}  */}
-
         </section>
-        
-
-      </main>}/>
-        <Route/>
+       </main>}/>
+        <Route path="/options" element={<Options
+          updateWord={updateWord} word={word}
+          />}/>
       </Routes>
         <Dummy errors= {getNumberOfErrors()}/>
 
@@ -74,7 +76,7 @@ function App() {
       
      
       
-      <Footer/>
+      <Footer updateWord={updateWord}/>
 
     </div>
   );
